@@ -1,21 +1,18 @@
 <template>
   <TheHeader />
-  <LeftSidebar />
-  <RightSidebar />
+  <ParentSidebar />
   <TheFooter />
 </template>
 
 <script>
   import TheHeader from "./components/TheHeader.vue";
-  import LeftSidebar from "./components/LeftSidebar.vue";
-  import RightSidebar from "./components/RightSidebar.vue";
+  import ParentSidebar from "./components/ParentSidebar.vue"
   import TheFooter from "./components/TheFooter.vue";
 
   export default {
     components: {
     TheHeader,
-    LeftSidebar,
-    RightSidebar,
+    ParentSidebar,
     TheFooter
 }
   }

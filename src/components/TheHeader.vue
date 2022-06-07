@@ -1,6 +1,6 @@
 <template>
-<nav class="bg-white py-3 items-center">
-      <div class="container mx-auto px-2 sm:px-6 lg:px-8 h-20">
+<nav class="bg-white py-2 items-center">
+      <div class="container mx-auto px-2 sm:px-6 lg:px-8 h-20 max-w-screen-xl">
         <div class="relative flex items-center justify-between h-16">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
@@ -200,7 +200,7 @@
         </div>
       </div>
 </nav>
-<div class="header-img container mx-auto p-4">
+<div class="header-img container mx-auto py-6 max-w-screen-xl">
   <img src="public\header-img.png" alt="IMG" class="w-full">
 </div>
    
