@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-between container mx-auto px-4 max-w-screen-xl">
+    <div class="flex container mx-auto px-4 max-w-screen-xl gap-x-10">
         <LeftSidebar />
         <RightSidebar />
         <h1></h1>

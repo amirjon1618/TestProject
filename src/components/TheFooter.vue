@@ -1,8 +1,8 @@
 <template>
-<div class="w-screen border-t-2 absolute bottom-0 ">
+<div class="w-screen border-t-2 absolute mt-10">
     <div class="container mx-auto px-4 flex justify-between  center py-6 items-center max-w-screen-xl">
         <div>
-            <span class="font-normal text-[14px] text-gray-500">&copy 2022 Developed by <a href="admin.tj" class="hover:text-blue-600">ADMIN.TJ</a></span>
+            <span class="font-normal text-[14px] text-gray-500">&copy 2022 Developed by <a href="http://admin.tj" class="hover:text-blue-600">ADMIN.TJ</a></span>
         </div>
         <div>
             <ul class=" flex w-48 gap-x-2 ">
