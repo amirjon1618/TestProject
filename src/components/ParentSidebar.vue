@@ -1,8 +1,7 @@
 <template>
-    <div class="flex container mx-auto px-4 max-w-screen-xl gap-x-10">
+    <div class="flex  container mx-auto  max-w-screen-xl flex-wrap sm:flex-nowrap">
         <LeftSidebar />
         <RightSidebar />
-        <h1></h1>
     </div>
 </template>
 

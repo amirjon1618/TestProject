@@ -1,12 +1,12 @@
 <template>
-  <div class="w-3/1 max-w-[400px]">
+  <div class=" mr-5 w-full sm:w-1/3">
     <div class="ls-slider bg-white p-2 rounded-xl mb-5">
       <div class="text-center">
         <span
           class="font-semibold text-[28px] bg-gray-200 py-2 items-center px-20 flex rounded-t-md"
           >Полякова Майя</span
         >
-        <img src="public/slider.jpg" alt="Slider" />
+        <img src="public/slider.jpg" alt="Slider" class="w-full"/>
       </div>
     </div>
     <div class="ls-tag  bg-white rounded-md">
@@ -62,7 +62,7 @@
         </div>
         <div class="flex flex-wrap   gap-5 p-5 rounded-b-md">
           <div class="flex" v-for="(to, index) in achievements" :key="index">
-            <img :src="to" alt="icon" />
+            <a href="#"><img :src="to" alt="icon" /></a>
           </div>
         </div>
         <div class="pl-5 pt-3 text-[14px] font-semibold text-gray-400">
@@ -70,7 +70,7 @@
         </div>
         <div class="flex flex-wrap   gap-5 p-5 rounded-b-md">
           <div class="flex" v-for="(to, index) in achievements" :key="index">
-            <img :src="to" alt="icon" />
+            <a href="#"><img :src="to" alt="icon" /></a>
           </div>
         </div>
         <div class="pl-5 pt-3 text-[14px] font-semibold text-gray-400">
@@ -78,7 +78,7 @@
         </div>
         <div class="flex flex-wrap   gap-5 p-5 rounded-b-md">
           <div class="flex" v-for="(to, index) in achievements" :key="index">
-            <img :src="to" alt="icon" />
+            <a href="#"><img :src="to" alt="icon" /></a>
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@
           >Теги</span
         >
         <a href="#" class="pt-4"
-          ><img src="../../public/edit.svg" alt="edit"
+          ><img src="public/edit.svg" alt="edit"
         /></a>
       </div>
       <ul class="px-4 py-6 font-bold leading-8 bg-white rounded-md">
@@ -168,12 +168,12 @@ export default {
         'Manager'
       ],
       achievements: [
-        '../../public/i-medal1.svg',
-        '../../public/i-medal2.svg',
-        '../../public/i-medal3.svg',
-        '../../public/i-medal4.svg',
-        '../../public/i-medal5.svg',
-        '../../public/i-medal6.svg'
+        'public/i-medal1.svg',
+        'public/i-medal2.svg',
+        'public/i-medal3.svg',
+        'public/i-medal4.svg',
+        'public/i-medal5.svg',
+        'public/i-medal6.svg'
       ]
     }
   }
