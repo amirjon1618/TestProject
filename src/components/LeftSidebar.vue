@@ -3,15 +3,15 @@
     <div class="ls-slider bg-white p-2 rounded-xl mb-5">
       <div class="text-center">
         <span
-          class="font-semibold text-[28px] bg-gray-200 py-2 items-center px-20 flex rounded-t-md"
+          class="font-semibold lg:text-lg text-sm bg-gray-200  py-2 items-center px-20 flex rounded-t-md"
           >Полякова Майя</span
         >
         <img src="public/slider.jpg" alt="Slider" class="w-full"/>
       </div>
     </div>
-    <div class="ls-tag  bg-white rounded-md">
-      <div class="flex bg-gray-200 rounded-t-md">
-        <span class="font-semibold text-[28px]  py-2 items-center px-28"
+    <div class="ls-tag  bg-white rounded-md ">
+      <div class="flex bg-gray-200 rounded-t-md lg:flex-nowrap flex-wrap text-sm xl:px-28 lg:px-20 md:px-15 sm:px-10 text-center">
+        <span class="font-semibold lg:text-lg text-sm  py-2 items-center text-center "
           >Теги</span
         >
         <a href="#" class="pt-5">Смотреть все</a>

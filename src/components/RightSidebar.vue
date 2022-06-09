@@ -1,151 +1,120 @@
 <template>
-    <div class="w-3/1 sm:mt-5">
+    <div class="w-3/1">
         <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
             <div class="flex justify-between items-center border-b pb-5">
                 <div class="new-post_span">
-                    <span class="text-[24px] font-bold text-[#696974]">Новый пост</span>
+                    <span class="lg:text-[24px] text-[18px] font-bold text-[#696974]">Новый пост</span>
                 </div>
-                <div class="new-post_format flex gap-x-5">
-                    <span>Normal</span>
+                <div class="new-post_format flex gap-x-5 items-center">
+                    <span class="cursor-pointer text-gray-400 hover:bg-gray-800 hover:rounded-sm" @click="textNormal">Normal</span>
                     <ul class="flex gap-x-2">
-                        <li><img src="public/edit-icon.svg" alt="icon"></li>
-                        <li><img src="public/edit-icon1.svg" alt="icon"></li>
-                        <li><img src="public/edit-icon3.svg" alt="icon"></li>
-                        <li><img src="public/edit-icon4.svg" alt="icon"></li>
+                        <li class="cursor-pointer text-gray-400 hover:bg-gray-800 hover:rounded-sm" @click="textBold" ><img src="public/edit-icon.svg" alt="icon"></li>
+                        <li class="cursor-pointer text-gray-400 hover:bg-gray-800 hover:rounded-sm" @click="textItalic"><img src="public/edit-icon1.svg" alt="icon"></li>
+                        <li class="cursor-pointer text-gray-400 hover:bg-gray-800 hover:rounded-sm" @click="textUnderline"><img src="public/edit-icon3.svg" alt="icon"></li>
                     </ul>
                     <ul class="flex gap-x-2">
-                        <li><img src="public/edit-icon5.svg" alt="icon"></li>
-                        <li><img src="public/edit-icon6.svg" alt="icon"></li>
+                        <li class="cursor-pointer text-gray-400 hover:bg-gray-800 hover:rounded-sm" @click="textLeft"><img src="public/edit-icon5.svg" alt="icon"></li>
+                        <li class="cursor-pointer text-gray-400 hover:bg-gray-800 hover:rounded-sm" @click="texJustify"><img src="public/edit-icon6.svg" alt="icon"></li>
                     </ul>
                     <ul class="flex gap-x-2">
-                        <li><img src="public/edit-icon7.svg" alt="icon"></li>
+                        <li class="cursor-pointer text-gray-400 hover:bg-gray-800 hover:rounded-sm" @click="textPy"><img src="public/edit-icon7.svg" alt="icon"></li>
                     </ul>
                 </div>
             </div>
-            <div class="flex justify-between pt-5">
-                <div class="new-post_img">
+            <form class="flex justify-between pt-5" @submit.prevent="addPost">
+                <div class="new-post_img ">
                     <img src="public/favicon.ico" alt="Icon">
                 </div>
                 <div class="new-post_input focus:outline-none focus:border-none">
-                    <input type="text" name="" id="" placeholder="Что у тебя на уме?" class=" py-2  focus:outline-none focus:border-none">
+                    <input type="text" v-model="value" name="" id="" placeholder="Что у тебя на уме?" :class="`${isBold ? 'font-extrabold' : 'font-normal'} ${isItalic ? 'italic' : 'not-italic'} ${isUnderline ? 'underline' : 'no-underline'} ${isLeft ? 'text-left' : ''} ${isJustify ? 'text-justify' : 'font-normal'} ${isPy ? 'font-bold' : 'font-normal'} px-5 py-2  focus:outline-none focus:border-none placeholder:font-normal placeholder:not-italic placeholder:no-underline   xl:w-[35rem] lg:w-[30rem] md:w-[25rem] sm:w-[20rem]`">
                 </div>
                 <div class="new-post_btn">
-                    <button class="bg-[#3DD598] hover:bg-[#2fb37c] px-6 py-3 rounded-lg text-white font-bold flex-none">Опубликовать</button>
+                    <button class="bg-[#3DD598] hover:bg-[#2fb37c] px-2 lg:px-6 py-3 rounded-lg lg:text-lg text-sm text-white font-bold flex-none" @click="addPost">Опубликовать</button>
                 </div>
-            </div>
+            </form>
         </div>
-        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
+
+        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5" v-for="addPost in post" :key="addPost.id">
             <div class="flex items-center">
                     <div class="pr-4">
                         <img class="" src="public/favicon.ico" alt="icon">
                     </div>
                     <div class="items-center pb-2">
                         <span class="text-[#171725] text-[16px] font-semibold">Amirjon Rajabov</span>
-                        <p class="text-[#92929D]">13 Апреля в 22:29</p>
+                        <p class="text-[#92929D]">{{addPost.date}}</p>
                     </div>
             </div>
-            <div class="flex justify-between pt-2">
-                <p class="text-[#44444F]">Идейные соображения высшего порядка, а также сложившаяся структура организации позволяет оценить значение систем массового участия.</p>
-                <img src="public/like.svg" alt="Like"><span class="flex items-center px-1">16</span>
-            </div>
-        </div>
-        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
-            <div class="flex items-center">
-                    <div class="pr-4">
-                        <img class="" src="public/favicon.ico" alt="icon">
-                    </div>
-                    <div class="items-center pb-2">
-                        <span class="text-[#171725] text-[16px] font-semibold">Amirjon Rajabov</span>
-                        <p class="text-[#92929D]">13 Апреля в 22:29</p>
-                    </div>
-            </div>
-            <div class="flex justify-between pt-2">
-                <p class="text-[#44444F]">Идейные соображения высшего порядка, а также сложившаяся структура организации позволяет оценить значение систем массового участия.</p>
+            <div class="flex pt-2 justify-between">
+               <div>
+                <p class="text-[#44444F]">{{
+                        addPost.text
+                    }}</p>
+               </div>
+             <div class="">
                 <img src="public/like.svg" alt="Like"><span class="flex items-center px-1">11</span>
             </div>
-        </div>
-        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
-            <div class="flex items-center">
-                    <div class="pr-4">
-                        <img class="" src="public/favicon.ico" alt="icon">
-                    </div>
-                    <div class="items-center pb-2">
-                        <span class="text-[#171725] text-[16px] font-semibold">Amirjon Rajabov</span>
-                        <p class="text-[#92929D]">13 Апреля в 22:29</p>
-                    </div>
-            </div>
-            <div class="flex justify-between pt-2">
-                <p class="text-[#44444F]">Идейные соображения высшего порядка, а также сложившаяся структура организации позволяет оценить значение систем массового участия.</p>
-                <img src="public/like.svg" alt="Like"><span class="flex items-center px-1">95</span>
             </div>
         </div>
-        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
-            <div class="flex items-center">
-                    <div class="pr-4">
-                        <img class="" src="public/favicon.ico" alt="icon">
-                    </div>
-                    <div class="items-center pb-2">
-                        <span class="text-[#171725] text-[16px] font-semibold">Amirjon Rajabov</span>
-                        <p class="text-[#92929D]">13 Апреля в 22:29</p>
-                    </div>
-            </div>
-            <div class="flex justify-between pt-2">
-                <p class="text-[#44444F]">Идейные соображения высшего порядка, а также сложившаяся структура организации позволяет оценить значение систем массового участия.</p>
-                <img src="public/like.svg" alt="Like"><span class="flex items-center px-1">16</span>
-            </div>
-        </div>
-        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
-            <div class="flex items-center">
-                    <div class="pr-4">
-                        <img class="" src="public/favicon.ico" alt="icon">
-                    </div>
-                    <div class="items-center pb-2">
-                        <span class="text-[#171725] text-[16px] font-semibold">Amirjon Rajabov</span>
-                        <p class="text-[#92929D]">13 Апреля в 22:29</p>
-                    </div>
-            </div>
-            <div class="flex justify-between pt-2">
-                <p class="text-[#44444F]">Идейные соображения высшего порядка, а также сложившаяся структура организации позволяет оценить значение систем массового участия.</p>
-                <img src="public/like.svg" alt="Like"><span class="flex items-center px-1">18</span>
-            </div>
-        </div>
-        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
-            <div class="flex items-center">
-                    <div class="pr-4">
-                        <img class="" src="public/favicon.ico" alt="icon">
-                    </div>
-                    <div class="items-center pb-2">
-                        <span class="text-[#171725] text-[16px] font-semibold">Amirjon Rajabov</span>
-                        <p class="text-[#92929D]">13 Апреля в 22:29</p>
-                    </div>
-            </div>
-            <div class="flex justify-between pt-2">
-                <p class="text-[#44444F]">Идейные соображения высшего порядка, а также сложившаяся структура организации позволяет оценить значение систем массового участия.</p>
-                <img src="public/like.svg" alt="Like"><span class="flex items-center px-1">19</span>
-            </div>
-        </div>
-        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
-            <div class="flex items-center">
-                    <div class="pr-4">
-                        <img class="" src="public/favicon.ico" alt="icon">
-                    </div>
-                    <div class="items-center pb-2">
-                        <span class="text-[#171725] text-[16px] font-semibold">Amirjon Rajabov</span>
-                        <p class="text-[#92929D]">13 Апреля в 22:29</p>
-                    </div>
-            </div>
-            <div class="flex justify-between pt-2">
-                <p class="text-[#44444F]">Идейные соображения высшего порядка, а также сложившаяся структура организации позволяет оценить значение систем массового участия.</p>
-                <img src="public/like.svg" alt="Like"><span class="flex items-center px-1">95</span>
-            </div>
-        </div>
+            
     </div>
 </template>
 
 <script>
-
+export default {
+  data () {
+    return {
+    value:"",
+    isBold:false,
+    isItalic:false,
+    isUnderline:false,
+    isLeft:false,
+    isJustify:false,
+    isPy:false,
+      post: [],
+    }
+  },
+  methods:{
+      addPost(){
+          if(this.value.trim() === '') return;
+                  this.post.push({
+                  id: Date.now(),
+                  text: this.value.trim(),
+                  date:`${new Date().getDate()} ${new Date().toLocaleString('default', { month: 'long' })} ${new Date().getHours()} :  ${new Date().getMinutes()}`
+            }
+          );
+          this.value = "";
+        
+      },
+    
+        textBold(){
+            this.isBold = !this.isBold;
+        },
+        textItalic(){
+            this.isItalic = !this.isItalic;
+        },
+        textUnderline(){
+            this.isUnderline = !this.isUnderline;
+        },
+        textLeft(){
+            this.isLeft = !this.isLeft;
+        },
+        texJustify(){
+            this.isJustify = !this.isJustify;
+        },
+        textPy(){
+            this.isPy = !this.isPy;
+        },
+        textNormal(){
+             this.isBold = this.isItalic  = this.isUnderline = this.isLeft = this.isJustify = this.isPy = false;
+        }
+  }
+}
 </script>
 
 <style>
-
+.add{
+    width:20px;
+    height:20px;
+    background-color: red;
+}
 </style>
