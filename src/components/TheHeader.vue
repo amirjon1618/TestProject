@@ -1,6 +1,7 @@
 <template>
-  <nav class="bg-white py-2 items-center">
-    <div class="container mx-auto h-20 max-w-screen-xl">
+<div class="header-content">
+   <nav class="bg-white py-2 items-center">
+    <div class="container px-4 sm:px-0 mx-auto h-20 max-w-screen-xl">
       <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <button
@@ -48,7 +49,7 @@
           class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
         >
           <div class="flex-shrink-0 flex items-center mr-10 items-center">
-            <a href="#" class="text-[28px] text-[#171725] font-bold"
+            <a href="/" class="text-[28px] text-[#171725] font-bold"
               >GMPortal</a
             >
           </div>
@@ -203,6 +204,8 @@
   <div class="header-img container mx-auto py-6 max-w-screen-xl">
     <img src="public\header-img.png" alt="IMG" class="w-full" />
   </div>
+</div>
+ 
 </template>
 
 <script></script>

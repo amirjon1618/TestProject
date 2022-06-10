@@ -1,5 +1,5 @@
 <template>
-    <div class="w-3/1">
+    <div class="sm:w-3/1 w-full sm:mt-0 mt-5">
         <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
             <div class="flex justify-between items-center border-b pb-5">
                 <div class="new-post_span">
@@ -45,13 +45,13 @@
                     </div>
             </div>
             <div class="flex pt-2 justify-between">
-               <div>
+              <div class="flex flex-wrap">
                 <p class="text-[#44444F]">{{
-                        addPost.text
-                    }}</p>
-               </div>
-             <div class="">
-                <img src="public/like.svg" alt="Like"><span class="flex items-center px-1">11</span>
+                    addPost.text
+                  }}</p>
+              </div>
+             <div class="post-like hover:cursor-pointer flex">
+                <img src="public/like.svg" alt="Like" @click="clickLike"><span class="flex items-center px-1">{{count}}</span>
             </div>
             </div>
         </div>
@@ -63,6 +63,7 @@
 export default {
   data () {
     return {
+    count: 0,
     value:"",
     isBold:false,
     isItalic:false,
@@ -106,6 +107,9 @@ export default {
         },
         textNormal(){
              this.isBold = this.isItalic  = this.isUnderline = this.isLeft = this.isJustify = this.isPy = false;
+        },
+        clickLike(){
+            this.count++;
         }
   }
 }
