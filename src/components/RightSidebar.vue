@@ -1,5 +1,5 @@
 <template>
-    <div class="sm:w-3/1 w-full sm:mt-0 mt-5">
+    <div class="mx-auto xl:px-0 w-full md:mt-0 mt-5">
         <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
             <div class="flex justify-between items-center border-b pb-5">
                 <div class="new-post_span">
@@ -46,7 +46,7 @@
             </div>
             <div class="flex pt-2 justify-between">
               <div class="flex flex-wrap">
-                <p class="text-[#44444F]">{{
+                <p class="text-[#44444F] break-all">{{
                     addPost.text
                   }}</p>
               </div>

@@ -1,9 +1,9 @@
 <template>
 <div class="header-content">
    <nav class="bg-white py-2 items-center">
-    <div class="container px-4 sm:px-0 mx-auto h-20 max-w-screen-xl">
+    <div class=" px-4 xl:px-0 mx-auto h-20 max-w-screen-xl">
       <div class="relative flex items-center justify-between h-16">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
           <button
             type="button"
             class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -139,7 +139,7 @@
       </div>
     </div>
 
-    <div class="sm:hidden" id="mobile-menu">
+    <div class="sm:hidden px-4 md:px-0" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1">
         <div
           class="sm:flex items-center lg:w-1/2 max-w-screen-md justify-end md:pl-12 md:px-8 lg:px-0 flex-1"
@@ -201,7 +201,7 @@
       </div>
     </div>
   </nav>
-  <div class="header-img container mx-auto py-6 max-w-screen-xl">
+  <div class="header-img container mx-auto py-6 max-w-screen-xl px-4 sm:px-0">
     <img src="public\header-img.png" alt="IMG" class="w-full" />
   </div>
 </div>

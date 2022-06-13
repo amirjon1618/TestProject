@@ -1,14 +1,15 @@
 <template>
-  <div class=" mr-5 w-full sm:w-1/3">
+  <div class="md:mr-5 md:w-1/3 px-4 xl:px-0">
     <div class="ls-slider bg-white p-2 rounded-xl mb-5">
       <carousel :slides="slides" :interval="5000" controls indicators></carousel>
     </div>
     <div class="ls-tag  bg-white rounded-md ">
-      <div class="flex bg-gray-200 rounded-t-md lg:flex-nowrap flex-wrap text-sm xl:px-28 lg:px-20 md:px-15 sm:px-10 text-center">
-        <span class="font-semibold lg:text-lg text-sm  py-2 items-center text-center "
-          >Теги</span
+      <div class="flex bg-gray-200 rounded-t-md justify-between pl-32">
+        <p class="font-semibold text-[28px]  py-2 items-center"
+          >О себе</p
         >
-        <a href="#" class="pt-5">Смотреть все</a>
+        <a href="#" class="pt-4 pr-5"
+          >Смотреть все</a>
       </div>
       <div class="flex flex-wrap   gap-6 p-6 rounded-b-md">
         <div v-for="(to, index) in categories" :key="index">
@@ -46,16 +47,16 @@
     </div>
     <div class="ls-arch mb-6">
       <div class="ls-tag  bg-white rounded-md">
-        <div class="flex bg-gray-200 rounded-t-md">
-          <span class="font-semibold text-[28px]  py-2 items-center px-28"
-            >Достижения</span
+        <div class="text-center bg-gray-200 rounded-t-md">
+          <p class="font-semibold text-[28px]  py-2 items-center"
+            >Достижения</p
           >
         </div>
         <div class="pl-5 pt-3 text-[14px] font-semibold text-gray-400">
           <span class="flex">Intranet</span>
         </div>
         <div class="flex flex-wrap   gap-5 px-5 pt-2 pb-5 rounded-b-md">
-          <div class="flex" v-for="(to, index) in achievements" :key="index">
+          <div class="flex" v-for="(to, index) in mess" :key="index">
             <a href="#"><img :src="to" alt="icon" /></a>
           </div>
         </div>
@@ -63,7 +64,7 @@
           <span class="flex">Onboarding</span>
         </div>
         <div class="flex flex-wrap   gap-5 px-5 pt-2 pb-5 rounded-b-md">
-          <div class="flex" v-for="(to, index) in achievements" :key="index">
+          <div class="flex" v-for="(to, index) in mess2" :key="index">
             <a href="#"><img :src="to" alt="icon" /></a>
           </div>
         </div>
@@ -71,18 +72,18 @@
           <span class="flex">Personal</span>
         </div>
         <div class="flex flex-wrap   gap-5 px-5 pt-2 pb-5 rounded-b-md">
-          <div class="flex" v-for="(to, index) in achievements" :key="index">
+          <div class="flex" v-for="(to, index) in mess3" :key="index">
             <a href="#"><img :src="to" alt="icon" /></a>
           </div>
         </div>
       </div>
     </div>
     <div class="ls-about">
-      <div class="flex bg-gray-200 rounded-t-md">
-        <span class="font-semibold text-[28px]  py-2 items-center px-36"
-          >Теги</span
+      <div class="flex bg-gray-200 rounded-t-md justify-between pl-32">
+        <p class="font-semibold text-[28px]  py-2 items-center"
+          >О себе</p
         >
-        <a href="#" class="pt-4"
+        <a href="#" class="pt-4 pr-5"
           ><img src="public/edit.svg" alt="edit"
         /></a>
       </div>
@@ -150,7 +151,7 @@ export default {
   components: { Carousel },
   data () {
     return {
-      mass:Array(10).fill().map(() => 'Mess'),
+     
       slides: [
       "https://picsum.photos/id/1001/400/200",
       "https://picsum.photos/id/1002/400/200",
@@ -181,6 +182,17 @@ export default {
         'public/i-medal5.svg',
         'public/i-medal6.svg'
       ],
+    }
+  },
+  computed: {
+    mess(){
+     return Array(6).fill().map(() => this.achievements[Math.floor(Math.random()*this.achievements.length)]);
+    },
+    mess2(){
+     return Array(6).fill().map(() => this.achievements[Math.floor(Math.random()*this.achievements.length)]);
+    },
+    mess3(){
+     return Array(6).fill().map(() => this.achievements[Math.floor(Math.random()*this.achievements.length)]);
     }
   }
 }
