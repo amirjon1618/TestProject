@@ -6,19 +6,32 @@
     <div class="ls-tag  bg-white rounded-md ">
       <div class="flex bg-gray-200 rounded-t-md justify-between pl-32">
         <p class="font-semibold text-[28px]  py-2 items-center"
-          >О себе</p
+          >Теги</p
         >
-        <a href="#" class="pt-4 pr-5"
-          >Смотреть все</a>
+        <div class="flex justify-between items-center space-x-4 pr-4"> 
+          <span class="cursor-pointer" @click="isInput = !isInput"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="#696974">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+          </svg></span>
+          <span class="cursor-pointer" @click="editTag"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="#696974">
+            <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+            <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+          </svg></span>
+        </div>
       </div>
       <div class="flex flex-wrap   gap-6 p-6 rounded-b-md">
-        <div v-for="(to, index) in categories" :key="index">
+        <form @submit.prevent="addTag" class="w-full">
+         <input type="text" :class="`w-full ${isInput ? 'hidden' : 'block'} border-solid border-2 rounded-md h-10 px-4`" v-model="input" placeholder="Добавить Тег">
+        </form>
+        <div v-for="(to, index) in categories" :key="index" v-show="isBlocks">
           <a
             href="#"
             class="bg-gray-200 px-4 py-2 rounded-lg  hover:bg-gray-300"
           >
             {{ to }}
           </a>
+        </div>
+        <div v-for="(to, index) in categories" :key="index" v-show="isHide">
+          <input type="text"  :value="to" class="bg-gray-200 px-4 py-2 rounded-lg  hover:bg-gray-300 w-16" @change="toChange"/>
         </div>
       </div>
     </div>
@@ -88,43 +101,10 @@
         /></a>
       </div>
       <ul class="px-4 py-6 font-bold leading-8 bg-white rounded-md">
-        <li>
-          Дата рождения:<span class="font-normal pl-3">15 января 1991г.</span>
+        <li v-for="(to,i) in infosd" :key="i">
+          {{to.infoStatic}}<span class="font-normal pl-3">{{to.infoDinamic}}</span>
         </li>
-        <li>
-          Расположение офиса:<span class="font-normal pl-3"
-            >Окончила ВШЭ по специальности Инженер - исследователь в области
-            наноэлектроники</span
-          >
-        </li>
-        <li>
-          Курсы и тренинги:<span class="font-normal pl-3"
-            >Agile Team Leader от Atlassian University в 2017 году</span
-          >
-        </li>
-        <li>Сертификаты:<span class="font-normal pl-3">Не имею</span></li>
-        <li>
-          Знание языков:<span class="font-normal pl-3"
-            >Английский, Русский, Таджикский</span
-          >
-        </li>
-        <li>
-          Мое хобби:<span class="font-normal pl-3"
-            >Увлекаюсь серфингом (особо в Москве не посерфишь, но нужно знать
-            места)</span
-          >
-        </li>
-        <li>
-          Мои любимые книги:<span class="font-normal pl-3"
-            >А. Рэнд - “Атлант расправил плечи” М. Дорофеев - “Джедейские
-            техники”</span
-          >
-        </li>
-        <li>
-          Мои любимые фильмы:<span class="font-normal pl-3"
-            >Матрица, Властелин колец, Звездные войны, Диктатор</span
-          >
-        </li>
+        
         <li>
           Мои соцсети:
         </li>
@@ -151,14 +131,17 @@ export default {
   components: { Carousel },
   data () {
     return {
-     
+    isHide:false,
+    isBlocks:true,
+     input: '',
+     isInput:true,
       slides: [
-      "https://picsum.photos/id/1001/400/200",
-      "https://picsum.photos/id/1002/400/200",
-      "https://picsum.photos/id/1003/400/200",
-      "https://picsum.photos/id/1004/400/200",
-      "https://picsum.photos/id/1005/400/200",
-      "https://picsum.photos/id/1006/400/200",
+      "public/car.jpg",
+      "public/cat.jpg",
+      "public/macedon.jpg",
+      "public/new-york.jpg",
+      "public/tigr.jpg",
+      "public/tornado.jpg",
     ],
       categories: [
         'PHP',
@@ -182,7 +165,60 @@ export default {
         'public/i-medal5.svg',
         'public/i-medal6.svg'
       ],
+      
+      infosd:[
+        {
+          infoStatic: 'Дата рождения:',
+          infoDinamic: '15 января 1991г.',
+        },
+        {
+          infoStatic: 'Расположение офиса:',
+          infoDinamic: 'Москва',
+        },
+        {
+          infoStatic: 'Образование:',
+          infoDinamic: 'Окончила ВШЭ по специальности Инженер - исследователь в области наноэлектроники',
+        },
+        {
+          infoStatic: 'Курсы и тренинги:',
+          infoDinamic: 'Agile Team Leader от Atlassian University в 2017 году',
+        },
+        {
+          infoStatic: 'Сертификаты:',
+          infoDinamic: 'Не имею',
+        },
+        {
+          infoStatic: 'Знание языков:',
+          infoDinamic: 'Английский, Русский, Испанский',
+        },
+        {
+          infoStatic: 'Мое хобби:',
+          infoDinamic: 'Увлекаюсь серфингом (особо в Москве не посерфишь, но нужно знать места)',
+        },
+        {
+          infoStatic: 'Мои любимые книги:',
+          infoDinamic: 'А. Рэнд - “Атлант расправил плечи” М. Дорофеев - “Джедейские техники”',
+        },
+        {
+          infoStatic: 'Мои любимые фильмы:',
+          infoDinamic: 'Матрица, Властелин колец, Звездные войны',
+        },
+      ]
     }
+  },
+  methods:{
+    addTag(){
+      this.categories.push(this.input);
+      this.input = '';
+    },
+    editTag(){
+      this.isBlocks = !this.isBlocks;
+      this.isHide = !this.isHide;
+    },
+    toChange(){
+      this.isBlocks = !this.isBlocks;
+      this.isHide = !this.isHide;
+    },
   },
   computed: {
     mess(){

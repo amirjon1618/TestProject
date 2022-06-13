@@ -48,13 +48,13 @@
         <div
           class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
         >
-          <div class="flex-shrink-0 flex items-center mr-10 items-center">
+          <div class="hidden md:flex flex-shrink-0 flex items-center mr-10 items-center">
             <a href="/" class="text-[28px] text-[#171725] font-bold"
               >GMPortal</a
             >
           </div>
           <div
-            class="hidden sm:flex items-center p-2.5 lg:w-1/2 max-w-screen-md justify-end p-2.5 pl-8 md:pl-12 md:px-8 lg:px-0 flex-1"
+            class="hidden md:flex items-center p-2.5 lg:w-1/2 max-w-screen-md justify-end p-2.5 pl-8 md:pl-12 md:px-8 lg:px-0 flex-1"
           >
             <div class="flex w-full h-12 relative ">
               <input
@@ -80,7 +80,7 @@
               </svg>
             </div>
           </div>
-          <div class="hidden sm:block sm:ml-6 items-center">
+          <div class="hidden md:block items-center">
             <div class="flex space-x-4">
               <a
                 href="#"

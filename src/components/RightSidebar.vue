@@ -34,7 +34,7 @@
             </form>
         </div>
 
-        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5" v-for="addPost in post" :key="addPost.id">
+        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5" v-for="addPost in post" :key="addPost.id" :id="addPost.id">
             <div class="flex items-center">
                     <div class="pr-4">
                         <img class="" src="public/favicon.ico" alt="icon">
@@ -51,7 +51,7 @@
                   }}</p>
               </div>
              <div class="post-like hover:cursor-pointer flex">
-                <img src="public/like.svg" alt="Like" @click="clickLike"><span class="flex items-center px-1">{{count}}</span>
+                <svg width="24px" height="24px" @click="clickLike(addPost.id)" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet"><path :fill="`${count % 2 !== 0  ? '#DD2E44' : '#92929D'}`" d="M35.885 11.833c0-5.45-4.418-9.868-9.867-9.868c-3.308 0-6.227 1.633-8.018 4.129c-1.791-2.496-4.71-4.129-8.017-4.129c-5.45 0-9.868 4.417-9.868 9.868c0 .772.098 1.52.266 2.241C1.751 22.587 11.216 31.568 18 34.034c6.783-2.466 16.249-11.447 17.617-19.959c.17-.721.268-1.469.268-2.242z"></path></svg><span class="flex items-center px-1">{{count}}</span>
             </div>
             </div>
         </div>
@@ -78,6 +78,7 @@ export default {
       addPost(){
           if(this.value.trim() === '') return;
                   this.post.push({
+                  count:0,
                   id: Date.now(),
                   text: this.value.trim(),
                   date:`${new Date().getDate()} ${new Date().toLocaleString('default', { month: 'long' })} ${new Date().getHours()} :  ${new Date().getMinutes()}`
@@ -108,17 +109,15 @@ export default {
         textNormal(){
              this.isBold = this.isItalic  = this.isUnderline = this.isLeft = this.isJustify = this.isPy = false;
         },
-        clickLike(){
-            this.count++;
+        clickLike(index){   
+            if(this.count %2 === 0){
+                this.count++;
+            }else this.count--;
         }
   }
 }
 </script>
 
 <style>
-.add{
-    width:20px;
-    height:20px;
-    background-color: red;
-}
+
 </style>
