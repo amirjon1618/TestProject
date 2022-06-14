@@ -12,7 +12,7 @@
           <span class="cursor-pointer" @click="isInput = !isInput"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="#696974">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
           </svg></span>
-          <span class="cursor-pointer" @click="editTag"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="#696974">
+          <span class=" cursor-pointer" @click="isBlocks = !isBlocks"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="#696974">
             <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
             <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
           </svg></span>
@@ -22,17 +22,14 @@
         <form @submit.prevent="addTag" class="w-full">
          <input type="text" :class="`w-full ${isInput ? 'hidden' : 'block'} border-solid border-2 rounded-md h-10 px-4`" v-model="input" placeholder="Добавить Тег">
         </form>
-        <div v-for="(to, index) in categories" :key="index" v-show="isBlocks">
-          <a
-            href="#"
-            class="bg-gray-200 px-4 py-2 rounded-lg  hover:bg-gray-300"
+        <div v-for="(to, index) in categories" :key="index" :contenteditable="isBlocks" :class="`${isBlocks ? 'border border-solid border-gray-800' : 'border-none'} rounded-md `">
+          <div
+            :class="`bg-gray-200 px-4 py-2  hover:bg-gray-300 w-full focus:outline-none focus:border-none  font-normal pl-3 rounded-md`"
           >
             {{ to }}
-          </a>
+          </div>
         </div>
-        <div v-for="(to, index) in categories" :key="index" v-show="isHide">
-          <input type="text"  :value="to" class="bg-gray-200 px-4 py-2 rounded-lg  hover:bg-gray-300 w-16" @change="toChange"/>
-        </div>
+        
       </div>
     </div>
     <div class="ls-info">
@@ -96,13 +93,14 @@
         <p class="font-semibold text-[28px]  py-2 items-center"
           >О себе</p
         >
-        <a href="#" class="pt-4 pr-5"
-          ><img src="public/edit.svg" alt="edit"
-        /></a>
+         
+        <div class="pt-4 pr-5 cursor-pointer" @click="isText = !isText">
+        <img  src="public/edit.svg" alt="edit"/>
+        </div> 
       </div>
       <ul class="px-4 py-6 font-bold leading-8 bg-white rounded-md">
         <li v-for="(to,i) in infosd" :key="i">
-          {{to.infoStatic}}<span class="font-normal pl-3">{{to.infoDinamic}}</span>
+          {{to.infoStatic}}<span :class="`${isText ? 'border border-solid border-gray-600 mx-2 px-2' : 'border-none'} font-normal pl-3 rounded-md`" :contenteditable="isText">{{to.infoDinamic}}</span>
         </li>
         
         <li>
@@ -132,9 +130,10 @@ export default {
   data () {
     return {
     isHide:false,
-    isBlocks:true,
+    isBlocks:false,
      input: '',
      isInput:true,
+     isText: false,
       slides: [
       "public/car.jpg",
       "public/cat.jpg",
