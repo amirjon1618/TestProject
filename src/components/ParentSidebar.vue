@@ -1,5 +1,5 @@
 <template>
-    <div class="flex container mx-auto  max-w-screen-xl flex-wrap md:flex-nowrap">
+    <div class="flex container mx-auto   xl:container lg:container md:container sm:container flex-wrap md:flex-nowrap">
         <LeftSidebar />
         <RightSidebar />
     </div>

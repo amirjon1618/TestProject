@@ -1,5 +1,5 @@
 <template>
-  <div class="md:mr-5 md:w-1/3 px-4 xl:px-0">
+  <div class="mr-4 md:w-1/3   ">
     <div class="ls-slider bg-white p-2 rounded-xl mb-5">
       <carousel :slides="slides" :interval="5000" controls indicators></carousel>
     </div>

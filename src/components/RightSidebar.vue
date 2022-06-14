@@ -1,6 +1,6 @@
 <template>
-    <div class="mx-auto xl:px-0 w-full md:mt-0 mt-5">
-        <div class="new-post rounded-xl w-full bg-white px-8 py-5 mb-5">
+    <div class="mx-auto  w-full md:mt-0 mt-5">
+        <div class="new-post rounded-xl  bg-white px-8 py-5 mb-5">
             <div class="flex justify-between items-center border-b pb-5">
                 <div class="new-post_span">
                     <span class="lg:text-[24px] text-[18px] font-bold text-[#696974]">Новый пост</span>
@@ -26,7 +26,7 @@
                     <img src="public/favicon.ico" alt="Icon">
                 </div>
                 <div class="new-post_input focus:outline-none focus:border-none">
-                    <input type="text" v-model="value" name="" id="" placeholder="Что у тебя на уме?" :class="`${isBold ? 'font-extrabold' : 'font-normal'} ${isItalic ? 'italic' : 'not-italic'} ${isUnderline ? 'underline' : 'no-underline'} ${isLeft ? 'text-left' : ''} ${isJustify ? 'text-justify' : 'font-normal'} ${isPy ? 'font-bold' : 'font-normal'} px-5 py-2  focus:outline-none focus:border-none placeholder:font-normal placeholder:not-italic placeholder:no-underline   xl:w-[35rem] lg:w-[30rem] md:w-[25rem] sm:w-[20rem]`">
+                    <input type="text" v-model="value" name="" id="" placeholder="Что у тебя на уме?" :class="`${isBold ? 'font-extrabold' : 'font-normal'} ${isItalic ? 'italic' : 'not-italic'} ${isUnderline ? 'underline' : 'no-underline'} ${isLeft ? 'text-left' : ''} ${isJustify ? 'text-justify' : 'font-normal'} ${isPy ? 'font-bold' : 'font-normal'} px-5 py-2  focus:outline-none focus:border-none placeholder:font-normal placeholder:not-italic placeholder:no-underline`">
                 </div>
                 <div class="new-post_btn">
                     <button class="bg-[#3DD598] hover:bg-[#2fb37c] px-2 lg:px-6 py-3 rounded-lg lg:text-lg text-sm text-white font-bold flex-none" @click="addPost">Опубликовать</button>

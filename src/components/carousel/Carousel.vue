@@ -119,4 +119,5 @@ export default {
   height: 200px;
   overflow: hidden;
 }
+
 </style>

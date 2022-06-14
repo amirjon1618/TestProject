@@ -1,17 +1,16 @@
 <template>
 <div class="header-content">
    <nav class="bg-white py-2 items-center">
-    <div class=" px-4 xl:px-0 mx-auto h-20 max-w-screen-xl">
+    <div class=" mx-auto h-20  xl:container lg:container md:container sm:container">
       <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
           <button
             type="button"
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            @click="isMobile = !isMobile"
+            :class="`${isMobile ? 'bg-gray-700 ' : 'bg-white text-gray-500'} inline-flex items-center justify-center p-2 rounded-md text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white`"
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
-            <span class="sr-only">Меню</span>
-
             <svg
               class="block h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -138,76 +137,95 @@
         </div>
       </div>
     </div>
-
-    <div class="sm:hidden px-4 md:px-0" id="mobile-menu">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <div
-          class="sm:flex items-center lg:w-1/2 max-w-screen-md justify-end md:pl-12 md:px-8 lg:px-0 flex-1"
-        >
-          <div class="flex w-full h-12 relative ">
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="Поиск..."
-              class=" border border-grey-300 w-full px-3 shadow-inner rounded-2xl focus:outline-none focus:border-blue-700 bg-gray-50"
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 absolute right-0 my-3 mx-4 text-gray-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+    <Transition>
+      <div v-if="isMobile" class="px-4 md:px-0" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <div
+            class="sm:flex items-center lg:w-1/2 max-w-screen-md justify-end md:pl-12 md:px-8 lg:px-0 flex-1"
+          >
+            <div class="flex w-full h-12 relative ">
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Поиск..."
+                class=" border border-grey-300 w-full px-3 shadow-inner rounded-2xl focus:outline-none focus:border-blue-700 bg-gray-50"
               />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 absolute right-0 my-3 mx-4 text-gray-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+            <div></div>
           </div>
-          <div></div>
+          <a
+            href="#"
+            class="bg-gray-200 hover:bg-gray-300 block px-3 py-2 rounded-md text-base font-medium"
+            aria-current="page"
+            >Главная</a
+          >
+
+          <a
+            href="#"
+            class=" bg-gray-200 hover:bg-gray-300  block px-3 py-2 rounded-md text-base font-medium"
+            >Сервисы</a
+          >
+
+          <a
+            href="#"
+            class=" bg-gray-200 hover:bg-gray-300  block px-3 py-2 rounded-md text-base font-medium"
+            >Календарь</a
+          >
+
+          <a
+            href="#"
+            class=" bg-gray-200 hover:bg-gray-300  block px-3 py-2 rounded-md text-base font-medium"
+            >Настройки</a
+          >
+          <a
+            href="#"
+            class=" bg-gray-200 hover:bg-gray-300  block px-3 py-2 rounded-md text-base font-medium"
+            >Помощь</a
+          >
         </div>
-        <a
-          href="#"
-          class="bg-gray-200 hover:bg-gray-300 block px-3 py-2 rounded-md text-base font-medium"
-          aria-current="page"
-          >Главная</a
-        >
-
-        <a
-          href="#"
-          class=" bg-gray-200 hover:bg-gray-300  block px-3 py-2 rounded-md text-base font-medium"
-          >Сервисы</a
-        >
-
-        <a
-          href="#"
-          class=" bg-gray-200 hover:bg-gray-300  block px-3 py-2 rounded-md text-base font-medium"
-          >Календарь</a
-        >
-
-        <a
-          href="#"
-          class=" bg-gray-200 hover:bg-gray-300  block px-3 py-2 rounded-md text-base font-medium"
-          >Настройки</a
-        >
-        <a
-          href="#"
-          class=" bg-gray-200 hover:bg-gray-300  block px-3 py-2 rounded-md text-base font-medium"
-          >Помощь</a
-        >
       </div>
-    </div>
+    </Transition>
   </nav>
-  <div class="header-img container mx-auto py-6 max-w-screen-xl px-4 sm:px-0">
+  <div class="header-img container mx-auto py-6  xl:container lg:container md:container sm:container px-4 sm:px-0">
     <img src="public\header-img.png" alt="IMG" class="w-full" />
   </div>
 </div>
  
 </template>
 
-<script></script>
+<script>
+export default {
+  data () {
+    return {
+    isMobile: false
+    }
+  },
+}
+</script>
 
-<style></style>
+<style>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
